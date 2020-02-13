@@ -1,0 +1,44 @@
+﻿@model List<BookReader.Models.Reader>
+
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>List of Readers</h2>
+
+<form class="form-inline my-2 my-lg-0" action="/Reader/List" method="GET">
+    <input class="form-control mr-sm-2" type="text" placeholder="Search" name="search">
+    <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+</form>
+<div class="link-new">
+        <a class="btn btn-primary" href="/Reader/Create">Add New Reader</a>
+</div>
+<table class="listpage table">
+    <thead>
+        <tr>
+            <th>First Name</th>
+            <th><a href="List?search=@Request.QueryString["search"]&sortOrder=last_name">Last Name</a></th>
+            <th><a href="List?search=@Request.QueryString["search"]&sortOrder=address">Address</a></th>
+            <th><a href="List?search=@Request.QueryString["search"]&sortOrder=phone">Phone</a></th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.ReaderFname</td>
+                <td>@item.ReaderLname</td>
+                <td>@item.ReaderAddress</td>
+                <td>@item.ReaderPhone</td>
+                <td>
+                    <a href="/Reader/Update/@item.ReaderId"><img src="https://img.icons8.com/windows/32/000000/edit.png">Update</a>
+                    <a href="/Reader/Details/@item.ReaderId"><img src="https://img.icons8.com/windows/32/000000/visible.png">Details</a>
+                    <a href="/Reader/Delete/@item.ReaderId"><img src="https://img.icons8.com/windows/32/000000/delete-forever.png">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a href="/List?page=1">2</a>

@@ -1,0 +1,64 @@
+﻿@model BookReader.Models.Reader
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create New Reader</h2>
+
+
+<form action="/Reader/Create" method="post">
+
+    <div class="form-group">
+        <div>
+            <label class="control-label col-md-2" for="ReaderFname">First Name</label>
+        </div>
+        <div class="col-md-10">
+            <input class="form-control text-box single-line" id="ReaderFname" name="ReaderFname" type="text" />
+        </div>
+    
+    </div>
+
+    <div class="form-group">
+        <div>
+            <label class="control-label col-md-2" for="ReaderLname">Last Name</label>
+        </div>
+
+        <div class="col-md-10">
+            <input class="form-control text-box single-line" id="ReaderLname" name="ReaderLname" type="text" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div>
+            <label class="control-label col-md-2" for="ReaderAddress">Address</label>
+        </div>
+
+        <div class="col-md-10">
+            <input class="form-control text-box single-line" id="ReaderAddress" name="ReaderAddress" type="text" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div>
+            <label class="control-label col-md-2" for="ReaderPhone">Phone</label>
+        </div>
+
+        <div class="col-md-10">
+            <input class="form-control text-box single-line" id="ReaderPhone" name="ReaderPhone" type="text" />
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Create</button>
+    </div>
+
+</form>
+<div>
+    <a href="List">Back to List</a>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,50 @@
+﻿@model List<BookReader.Models.Book>
+@using PagedList.Mvc;
+@using PagedList;
+
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>List of Books</h2>
+
+<form class="form-inline my-2 my-lg-0" action="/Book/List" method="get">
+    <input class="form-control mr-sm-2" type="text" placeholder="Search" name="search">
+    <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+</form>
+<div class="link-new">
+    <a class="btn btn-primary" href="/Book/Create">Add New Book</a>
+</div>
+<table class="listpage table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th><a href="List?search=@Request.QueryString["search"]&sortOrder=author">Author</a></th>
+            <th><a href="List?search=@Request.QueryString["search"]&sortOrder=publish">Publish Date</a></th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.BookTitle</td>
+                <td>@item.BookDescrp</td>
+                <td>@item.BookAuthor</td>
+                <td>@item.BookPublish.ToShortDateString()</td>
+                <td>
+                    <a href="/Book/Update/@item.BookId"><img src="https://img.icons8.com/windows/32/000000/edit.png">Update</a>
+                    <a href="/Book/Details/@item.BookId"><img src="https://img.icons8.com/windows/32/000000/visible.png">Details</a>
+                    <a href="/Book/Delete/@item.BookId"><img src="https://img.icons8.com/windows/32/000000/delete-forever.png">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+
+@*@Html.PagedListPager(Model , page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))*@

@@ -1,0 +1,42 @@
+﻿@model BookReader.Models.Book
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h1>Delete</h1>
+
+<p class="alert-msg">Are you sure you want to <strong>DELETE</strong> this Book?</p>
+
+<table>
+    <tbody>
+        <tr>
+            <th>Title:</th>
+            <td>@Model.BookTitle</td>
+        </tr>
+        <tr>
+            <th>Description:</th>
+            <td>@Model.BookDescrp</td>
+        </tr>
+        <tr>
+            <th>Publish Date:</th>
+            <td>@Model.BookPublish</td>
+        </tr>
+        <tr>
+            <th>Author:</th>
+            <td>@Model.BookAuthor</td>
+        </tr>
+         
+    </tbody>
+</table>
+
+<form action="/Book/Delete/@Model.BookId" method="post">
+
+    <button type="submit" class="btn btn-danger">Delete </button>
+       
+
+</form>
+<div>
+    <a href="/Book/List">Back to List</a>
+</div>
+

@@ -1,0 +1,78 @@
+﻿@model BookReader.Models.ViewModels.DetailsReader
+
+@{
+    ViewBag.Title = "Details";
+}
+
+
+
+    <div class="main-content">
+        <h2>Reader Details</h2>
+        <table class="table">
+            <tbody>
+                <tr>
+                    <th>First Name:</th>
+                    <td>@Model.Reader.ReaderFname</td>
+                </tr>
+                <tr>
+                    <th>Last Name:</th>
+                    <td>@Model.Reader.ReaderLname</td>
+                </tr>
+                <tr>
+                    <th>Address:</th>
+                    <td>@Model.Reader.ReaderAddress</td>
+                </tr>
+                <tr>
+                    <th>Phone:</th>
+                    <td>@Model.Reader.ReaderPhone</td>
+                </tr>
+            </tbody>
+        </table>
+        <a href="/Reader/Delete/@Model.Reader.ReaderId" class="btn btn-primary"> Delete</a>
+        <a href="/Reader/Update/@Model.Reader.ReaderId" class="btn btn-primary"> Update</a>
+        <div>
+            <a href="/Reader/List">Back to List</a>
+        </div>
+    </div>
+<div>
+    <h2>List of Books</h2>
+    <table>
+        <tbody>
+            @foreach (var item in Model.Books)
+            {
+                <tr>
+                    <th>Book Title:</th>
+                    <td>@item.BookTitle</td>
+                    <td>
+                        <form method="POST" action="/Reader/deleteBook/@Model.Reader.ReaderId">
+                            <input type="text" name="BookId" value="@item.BookId" style="display:none;" />
+                            <button type="submit"value="deleteBook"  class="btn btn-danger" ><img src="https://img.icons8.com/windows/32/000000/delete-forever.png">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<div class="top-right">
+    <h2>Add Books</h2>
+    <table>
+        <tbody>
+            @foreach (var item in Model.notreadBooks)
+            {
+                <tr>
+                    <th>Book Title: </th>
+                    <td>@item.BookTitle</td>
+                    <td>
+                        <form method="POST" action="/Reader/addBook/@Model.Reader.ReaderId">
+                            <input type="text" name="BookId" value="@item.BookId" style="display:none;" />
+                            <button  type="submit" value="addBook" class="btn btn-success"><img src="https://img.icons8.com/windows/32/000000/add.png">ADD</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+</div>
+

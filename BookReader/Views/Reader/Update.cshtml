@@ -1,0 +1,64 @@
+﻿@model BookReader.Models.Reader
+
+@{
+    ViewBag.Title = "Update";
+}
+
+
+<h2>Update Reader</h2>
+
+
+<form action="/Reader/Update/@Model.ReaderId" method="post">
+
+    <div class="form-group">
+        <div>
+            <label class="control-label col-md-2" for="ReaderTitle">First Name:</label>
+        </div>
+        <div class="col-md-10">
+            <input class="form-control text-box single-line" id="ReaderFname" name="ReaderFname" type="text" value="@Model.ReaderFname">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div>
+            <label class="control-label col-md-2" for="ReaderDescrp">Last Name:</label>
+        </div>
+
+        <div class="col-md-10">
+            <input class="form-control text-box single-line" id="ReaderLname" name="ReaderLname" type="text" value="@Model.ReaderLname">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div>
+            <label class="control-label col-md-2" for="ReaderAuthor">Address:</label>
+        </div>
+
+        <div class="col-md-10">
+            <input class="form-control text-box single-line" id="ReaderAddress" name="ReaderAddress" type="text" value="@Model.ReaderAddress">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div>
+            <label class="control-label col-md-2" for="ReaderAuthor">Phone:</label>
+        </div>
+
+        <div class="col-md-10">
+            <input class="form-control text-box single-line" id="ReaderPhone" name="ReaderPhone" type="text" value="@Model.ReaderPhone">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <button type="submit" value="Update" class="btn btn-success">Update</button>
+    </div>
+
+</form>
+
+<div>
+    <a href="/Reader/List">Back to List</a>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
